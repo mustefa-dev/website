@@ -1,65 +1,78 @@
-import axios from 'axios';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import apiHelper from '@/api/api-helper';
+import { axiosService } from '@/api/axios-service';
 
 type Props = {
-  details: {
-    id: string;
-    title: string;
-    name: string;
-    image: string;
-  };
+    subdomain: string;
 };
 
-function Cards({}) {
-  const [data, setData] = useState([]);
+type CompanyData = {
+    name: string;
+    subDomain: string;
+    heroTitle: string;
+    heroDescription: string;
+    shapeTemplate: string | null;
+    sectionImage: string;
+    sectionTitle: string;
+    sectionDescription: string;
+    heroImage: string;
+    logoImage: string;
+    productsImages: string[];
+    servicesImage: string[];
+    location: string;
+    emailContact: string;
+    phoneContact: string;
+    socialMediaLinks: string[];
+    tagline: string | null;
+    primaryColor: string;
+    secondaryColor: string;
+    socialLinks: string[];
+    features: {
+        title: string;
+        description: string;
+        icon: string;
+        featuerColor: string;
+    }[];
+    subscriptionStartDate: string;
+    subscriptionEndDate: string;
+    isSubscriptionValid: boolean;
+    redirectUrl: string;
+    id: string;
+    creationDate: string;
+};
 
-  // useEffect(() => {
-  //   axios
-  //     .get(apiHelper.WEBSITE.GET)
-  //     .then((response) => {
-  //       setData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('There was an error!', error);
-  //     });
-  // }, []);304 × 405 px
+function Cards({ subdomain }: Props) {
+    const [data, setData] = useState<CompanyData | null>(null);
 
-  return (
-    <div className="container mx-auto grid grid-cols-3 items-center justify-center gap-5">
-      <img
-        className="aspect-[3/4] object-cover"
-        src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/12/solo-leveling-art-showing-hunters-who-have-just-taken-down-beasts.jpg"
-        alt=""
-      />
-      <img
-        className="aspect-[3/4] object-cover"
-        src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/12/solo-leveling-art-showing-hunters-who-have-just-taken-down-beasts.jpg"
-        alt=""
-      />
-      <img
-        className="aspect-[3/4] object-cover"
-        src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/12/solo-leveling-art-showing-hunters-who-have-just-taken-down-beasts.jpg"
-        alt=""
-      />
-      <img
-        className="aspect-[3/4] object-cover"
-        src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/12/solo-leveling-art-showing-hunters-who-have-just-taken-down-beasts.jpg"
-        alt=""
-      />
-      <img
-        className="aspect-[3/4] object-cover"
-        src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/12/solo-leveling-art-showing-hunters-who-have-just-taken-down-beasts.jpg"
-        alt=""
-      />
-      <img
-        className="aspect-[3/4] object-cover"
-        src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/12/solo-leveling-art-showing-hunters-who-have-just-taken-down-beasts.jpg"
-        alt=""
-      />
-    </div>
-  );
+    useEffect(() => {
+        if (subdomain) {
+            axiosService
+                .get(apiHelper.WEBSITE.GET_SUBDOMAIN(subdomain))
+                .then((response) => {
+                    setData(response.data);
+                })
+                .catch((error) => {
+                    console.error('There was an error fetching the company data!', error);
+                });
+        }
+    }, [subdomain]);
+
+    if (!data) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div className="container mx-auto grid grid-cols-3 items-center justify-center gap-5">
+            {data.productsImages.map((image, index) => (
+                <img
+                    key={index}
+                    className="aspect-[3/4] object-cover h-96 w-full"
+                    src={image}
+                    alt={`Product ${index + 1}`}
+                />
+            ))}
+        </div>
+    );
 }
 
 export default Cards;

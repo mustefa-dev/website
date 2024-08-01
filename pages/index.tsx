@@ -1,56 +1,25 @@
-import Cards from '@/components/Cards';
 import React, { Fragment } from 'react';
 import HeroComponent from '@/components/website/HeroComponent';
 import Header from '@/components/layout/Header';
-import AboutComponent from '@/components/website/AboutComponent';
+import Cards from '@/components/Cards';
 import Footer from '@/components/layout/Footer';
+import AboutComponent from "@/components/website/AboutComponent";
+import FeaturesComponent from "@/components/website/Features";
 
 type Props = {};
 
-const data = [
-  {
-    id: '01',
-    title: 'House',
-    name: 'project name',
-    image: '/assets/cards/card1.jpg',
-  },
-  {
-    id: '02',
-    title: 'House',
-    name: 'project name',
-    image: '/assets/cards/card2.jpg',
-  },
-  {
-    id: '03',
-    title: 'House',
-    name: 'project name',
-    image: '/assets/cards/card3.jpg',
-  },
-  {
-    id: '04',
-    title: 'House',
-    name: 'project name',
-    image: '/assets/cards/card4.jpg',
-  },
-  {
-    id: '05',
-    title: 'House',
-    name: 'project name',
-    image: '/assets/cards/card5.jpg',
-  },
-];
-
-function index({}: Props) {
-
-  return (
-    <Fragment>
-      <Header />
-      <HeroComponent/>
-      <AboutComponent/>
-      <Cards />
-      <Footer />
-    </Fragment>
-  );
+function Index({}: Props) {
+    const subdomain = process.env.NEXT_PUBLIC_SUBDOMAIN;
+    return (
+        <Fragment>
+            <Header />
+            <HeroComponent />
+            <AboutComponent />
+            <Cards subdomain={subdomain} />
+            <FeaturesComponent />
+            <Footer />
+        </Fragment>
+    );
 }
 
-export default index;
+export default Index;
