@@ -62,11 +62,11 @@ function Cards({ subdomain }: Props) {
     }
 
     return (
-        <div className="container mx-auto grid grid-cols-3 items-center justify-center gap-5">
+        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg: gap-5">
             {data.productsImages.map((image, index) => (
                 <img
                     key={index}
-                    className="aspect-[3/4] object-cover h-96 w-full"
+                    className="aspect-[524/699] object-cover h-[699px] w-[524px]"
                     src={image}
                     alt={`Product ${index + 1}`}
                 />
