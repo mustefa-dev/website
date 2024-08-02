@@ -9,6 +9,7 @@ type HeroData = {
     heroDescription: string;
     heroImage: string;
     secondaryColor: string;
+    redirectUrl: string;
 
 };
 
@@ -33,6 +34,11 @@ function HeroComponent({}: Props) {
         return <div>Loading...</div>;
     }
 
+    const handleClick = () => {
+        if (data.redirectUrl) {
+            window.location.href = data.redirectUrl;
+        }
+    };
     const hex = data.secondaryColor||'#efefef';
 
     return (
@@ -40,7 +46,14 @@ function HeroComponent({}: Props) {
             <div className='flex flex-col justify-center items-center mt-10 h-full' style={{ background: `${hex}70` }}>
                 <h1 className='text-5xl font-bold text-center'>{data.heroTitle}</h1>
                 <p className='text-xl'>{data.heroDescription}</p>
-                <button className=' bg-black text-white p-3 px-7 rounded-md my-2'>Contact</button>
+                <p className='text-xl'>{data.heroDescription}</p>
+                <button
+                    className='text-white p-3 px-7 rounded-md my-2'
+                    style={{backgroundColor: data.secondaryColor}}
+                    onClick={handleClick}
+                >
+                    تواصل معنا
+                </button>
             </div>
         </div>
     );

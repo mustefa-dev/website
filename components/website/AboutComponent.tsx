@@ -60,13 +60,23 @@ function AboutComponent({}: Props) {
         return <div>Loading...</div>;
     }
 
+    const handleClick = () => {
+        if (data.redirectUrl) {
+            window.location.href = data.redirectUrl;
+        }
+    };
+
     return (
         <div className="flex flex-col sm:flex-row justify-between gap-1 md:gap-16 h-screen p-4 md:p-16">
             <div className="text-right w-full sm:w-1/2 flex gap-4 flex-col justify-center px-5 items-end h-full">
                 <h2 className="text-5xl font-bold">{data.heroTitle}</h2>
                 <p className="text-lg md:text-xl">{data.heroDescription}</p>
-                <button className=" bg-black text-white p-3 px-7 rounded-md my-2">
-                    Contact
+                <button
+                    className="text-white p-3 px-7 rounded-md my-2"
+                    style={{ backgroundColor: data.secondaryColor }}
+                    onClick={handleClick}
+                >
+                    تواصل معا
                 </button>
             </div>
             <img
