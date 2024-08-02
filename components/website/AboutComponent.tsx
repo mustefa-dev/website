@@ -60,11 +60,7 @@ function AboutComponent({}: Props) {
         return <div>Loading...</div>;
     }
 
-    const handleClick = () => {
-        if (data.redirectUrl) {
-            window.location.href = data.redirectUrl;
-        }
-    };
+    const shapeClass = data.shapeTemplate ? `shape-${data.shapeTemplate.toLowerCase()}` : '';
 
     return (
         <div className="flex flex-col sm:flex-row justify-between gap-1 md:gap-16 h-screen p-4 md:p-16">
@@ -74,15 +70,15 @@ function AboutComponent({}: Props) {
                 <button
                     className="text-white p-3 px-7 rounded-md my-2"
                     style={{ backgroundColor: data.secondaryColor }}
-                    onClick={handleClick}
+                    onClick={() => { if (data.redirectUrl) window.location.href = data.redirectUrl; }}
                 >
-                    تواصل معا
+                    Contact
                 </button>
             </div>
             <img
                 src={data.heroImage}
                 alt="about"
-                className="w-full sm:w-1/2 object-cover"
+                className={`w-full sm:w-1/2 object-cover ${shapeClass}`}
             />
         </div>
     );

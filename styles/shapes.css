@@ -1,0 +1,76 @@
+/* shapes.css */
+.shape-circle {
+    clip-path: circle(50%);
+}
+
+.shape-square {
+    clip-path: square();
+}
+
+.shape-triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.shape-diamond {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.shape-star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.shape-heart {
+    clip-path: path('M 50 15 C 20 15, 20 50, 50 85 C 80 50, 80 15, 50 15 Z');
+}
+
+.shape-pentagon {
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.shape-ellipse {
+    clip-path: ellipse(50% 40% at 50% 50%);
+}
+
+.shape-parallelogram {
+    clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+}
+
+.shape-trapezoid {
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+
+.shape-arrow {
+    clip-path: polygon(0% 50%, 50% 0%, 100% 50%, 50% 100%);
+}
+
+.shape-crescent {
+    clip-path: path('M 50 50 Q 70 30, 90 50 Q 70 70, 50 50 Z');
+}
+
+.shape-octagon {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+}
+
+.shape-chevron {
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.shape-right-arrow {
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.shape-left-arrow {
+    clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+}
+
+.shape-up-arrow {
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+
+.shape-down-arrow {
+    clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+}
+
+.shape-hexagram {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}

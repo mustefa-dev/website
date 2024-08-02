@@ -39,7 +39,7 @@ function HeroComponent({}: Props) {
             window.location.href = data.redirectUrl;
         }
     };
-    const hex = data.secondaryColor||'#efefef';
+    const hex = data.secondaryColor||'';
 
     return (
         <div className='h-[100vh] bg-fixed bg-center bg-cover' style={{ backgroundImage: `url(${data.heroImage})` }}>

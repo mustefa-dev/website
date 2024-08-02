@@ -41,7 +41,7 @@ function Header({}: Props) {
     return (
         <div
             className={`w-100 h-[70px] fixed top-0 left-0 right-0 z-50 flex justify-between items-center ${isMobile ? 'px-4' : 'px-16'}`}
-            style={{backgroundColor: data.primaryColor || '#efefef'}}>
+            style={{backgroundColor: data.primaryColor || '#3b3b3b'}}>
             <p className='text-black text-lg font-bold'>{data.phoneContact}</p>
 
             <Link href={'/'} className='cursor-pointer h-16 w-12 '>
