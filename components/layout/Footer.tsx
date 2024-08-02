@@ -1,3 +1,4 @@
+// components/layout/Footer.tsx
 import React, { useEffect, useState } from 'react';
 import useDeviceInfo from '@/hooks/useDeviceInfo';
 import axios from 'axios';

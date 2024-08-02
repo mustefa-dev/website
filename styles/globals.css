@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
 
-*{
+* {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
@@ -11,15 +11,17 @@
 html {
   scroll-behavior: smooth;
 }
+
 body {
-    background-image: url('/xxx.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
+  background-image: url('/xxx.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
 }
+
 .tilte {
   font-family: 'Marcellus', serif;
 }
@@ -48,7 +50,6 @@ body {
   scroll-snap-align: start;
 }
 
-
 .bg-blue-500 {
   background-color: blue;
 }
@@ -58,7 +59,7 @@ body {
 }
 
 .ring-2 {
-box-shadow: 0 0 0 2px white;
+  box-shadow: 0 0 0 2px white;
 }
 
 .ring-transparent {
@@ -131,19 +132,58 @@ box-shadow: 0 0 0 2px white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 8px; /* Adjust as needed */
+  margin-bottom: 8px;
+  /* Adjust as needed */
 }
 
 .icon-text-container > * {
   margin: 4px 0;
 }
 
-.feature {
-  padding: 16px;
-  margin: 8px;
-  border-radius: 8px;
-  text-align: center;
+.features-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
 }
+
+.feature {
+  flex: 1 1 calc(33.333% - 32px);
+  box-sizing: border-box;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.icon-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.icon-text-container p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .feature {
+    flex: 1 1 calc(50% - 32px);
+  }
+}
+
+@media (max-width: 480px) {
+  .feature {
+    flex: 1 1 100%;
+  }
+}
+
 
 /* global.css */
 

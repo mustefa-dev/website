@@ -1,3 +1,4 @@
+// pages/index.tsx
 import React, { Fragment } from 'react';
 import HeroComponent from '@/components/website/HeroComponent';
 import Header from '@/components/layout/Header';

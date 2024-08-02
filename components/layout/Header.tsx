@@ -1,3 +1,4 @@
+// components/layout/Header.tsx
 import React, { useEffect, useState } from 'react';
 import useDeviceInfo from '@/hooks/useDeviceInfo';
 import Link from 'next/link';
@@ -13,7 +14,6 @@ type HeaderData = {
     logoImage: string;
     phoneContact: string;
     primaryColor: string;
-
 };
 
 function Header({}: Props) {
@@ -42,13 +42,13 @@ function Header({}: Props) {
         <div
             className={`w-100 h-[70px] fixed top-0 left-0 right-0 z-50 flex justify-between items-center ${isMobile ? 'px-4' : 'px-16'}`}
             style={{backgroundColor: data.primaryColor || '#3b3b3b'}}>
-            <p className='text-black text-lg font-bold'>{data.phoneContact}</p>
+            <p className='text-white text-black text-lg font-bold'>{data.phoneContact}</p>
 
             <Link href={'/'} className='cursor-pointer h-16 w-12 '>
                 {isMobile ? <img src={data.logoImage} alt="Logo" width="100" height="40"/> :
                     <img src={data.logoImage} alt="Logo"/>}
             </Link>
-            <p className='text-black text-lg font-bold'>{data.name}</p>
+            <p className='text-white text-black text-lg font-bold'>{data.name}</p>
 
         </div>
     );

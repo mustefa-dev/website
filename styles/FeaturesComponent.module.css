@@ -1,0 +1,47 @@
+.featuresContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    gap: 16px;
+    justify-content: center; /* Center the items */
+    padding: 16px;
+}
+
+.feature {
+    flex: 1 1 200px; /* Ensure flexible width with a minimum size */
+    box-sizing: border-box;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    min-width: 200px; /* Ensure a minimum width */
+    max-width: 300px; /* Limit maximum width */
+    color: white;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.iconTextContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.iconTextContainer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .feature {
+        flex: 1 1 150px; /* Adjust size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .feature {
+        flex: 1 1 100%; /* Full width for very small screens */
+    }
+}

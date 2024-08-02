@@ -8,6 +8,7 @@ import {
     Cloud as CloudIcon, Camera as CameraIcon, Map as MapIcon, CalendarToday as CalendarTodayIcon
 } from '@material-ui/icons';
 import apiHelper from "@/api/api-helper";
+import styles from '@/styles/FeaturesComponent.module.css'; // Import the CSS module
 
 type Feature = {
     title: string;
@@ -19,12 +20,7 @@ type Feature = {
 type CompanyData = {
     features: Feature[];
 };
-const subdomain = process.env.NEXT_PUBLIC_SUBDOMAIN;
-if (subdomain) {
-    axios.get(apiHelper.WEBSITE.GET_SUBDOMAIN(subdomain))
-        .then(response => setData(response.data))
-        .catch(error => console.error('There was an error!', error));
-}
+
 const iconComponents: { [key: string]: JSX.Element } = {
     home: <HomeIcon />, star: <StarIcon />, account: <AccountCircleIcon />, settings: <SettingsIcon />,
     info: <InfoIcon />, help: <HelpIcon />, contact: <ContactMailIcon />, notifications: <NotificationsIcon />,
@@ -48,10 +44,10 @@ const FeaturesComponent: React.FC = () => {
     if (!data) return <div>Loading...</div>;
 
     return (
-        <div className="flex mx-auto">
+        <div className={styles.featuresContainer}>
             {data.features.map((feature, index) => (
-                <div key={index} className="feature">
-                    <div className="icon-text-container" style={{ color: feature.featuerColor }}>
+                <div key={index} className={styles.feature}>
+                    <div className={styles.iconTextContainer} style={{ color: feature.featuerColor }}>
                         {iconComponents[feature.icon]}
                         <p>{feature.title}</p>
                     </div>
