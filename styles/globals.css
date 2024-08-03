@@ -12,15 +12,7 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  background-image: url('/xxx.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
-}
+
 
 .tilte {
   font-family: 'Marcellus', serif;
@@ -50,8 +42,8 @@ body {
   scroll-snap-align: start;
 }
 
-.bg-blue-500 {
-  background-color: blue;
+.bg-red-500 {
+  background-color: red;
 }
 
 .bg-gray-300 {

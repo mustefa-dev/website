@@ -66,8 +66,8 @@ function AboutComponent({}: Props) {
     return (
         <div className="flex flex-col sm:flex-row justify-between gap-4 md:gap-16 h-screen p-4 md:p-16">
             <div className="text-center sm:text-right w-full sm:w-1/2 flex gap-4 flex-col justify-center px-5 items-center sm:items-end h-full">
-                <h2 className=" text-white text-3xl sm:text-5xl font-bold">{data.heroTitle}</h2>
-                <p className="text-white text-base sm:text-lg md:text-xl">{data.heroDescription}</p>
+                <h2 className=" text-white text-3xl sm:text-5xl font-bold">{data.sectionTitle}</h2>
+                <p className="text-white text-base sm:text-lg md:text-xl">{data.sectionDescription}</p>
                 <button
                     className="text-white p-3 px-7 rounded-md my-2"
                     style={{ backgroundColor: data.secondaryColor || '#3b3b3b' }}
@@ -77,7 +77,7 @@ function AboutComponent({}: Props) {
                 </button>
             </div>
             <img
-                src={data.heroImage}
+                src={data.sectionImage}
                 alt="about"
                 className={`w-full sm:w-1/2 object-cover ${shapeClass}`}
             />

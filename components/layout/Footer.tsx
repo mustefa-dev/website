@@ -1,4 +1,3 @@
-// components/layout/Footer.tsx
 import React, { useEffect, useState } from 'react';
 import useDeviceInfo from '@/hooks/useDeviceInfo';
 import axios from 'axios';
@@ -13,6 +12,7 @@ type FooterData = {
     rights: string;
     description: string;
     socialMediaLinks: string[];
+    primaryColor: string;
 };
 
 const socialMediaIcons = {
@@ -49,16 +49,19 @@ const Footer: React.FC = () => {
     };
 
     return (
-        <footer className='flex flex-col items-center bg-black text-white mt-14 py-10'>
-            <div className={`w-full flex ${isMobile ? 'flex-col' : 'flex-row-reverse'} gap-16 px-4 md:px-16 sm:px-16`}>
-                <p className={`${isMobile ? 'w-full' : 'w-[500px]'} text-center mb-6`}>{data.description}</p>
-                <div className='flex flex-col gap-2 text-center'>
+        <footer
+            className='flex flex-col items-center text-white mt-14 py-10'
+            style={{ backgroundColor: data.primaryColor || 'black' }}
+        >
+            <div className='w-full flex flex-col md:flex-row-reverse gap-6 px-4 md:px-16 lg:gap-16'>
+                <p className='text-center mb-6 md:mb-0 md:w-1/2 lg:w-[500px]'>{data.description}</p>
+                <div className='flex flex-col items-center text-center gap-2'>
                     <p>{data.location}</p>
                     <p>{data.emailContact}</p>
                     <p>{data.phoneContact}</p>
                 </div>
             </div>
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="flex flex-wrap justify-center gap-4 mt-6">
                 {data.socialMediaLinks.map((link, index) => {
                     const icon = getSocialMediaIcon(link);
                     return icon ? (
