@@ -1,6 +1,8 @@
+// components/Cards.tsx
 import React, { useEffect, useState } from 'react';
 import apiHelper from '@/api/api-helper';
 import { axiosService } from '@/api/axios-service';
+import ImageModal from './ImageModal';
 
 type Props = {
     subdomain: string;
@@ -43,6 +45,8 @@ type CompanyData = {
 
 function Cards({ subdomain }: Props) {
     const [data, setData] = useState<CompanyData | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
     useEffect(() => {
         if (subdomain) {
@@ -57,6 +61,28 @@ function Cards({ subdomain }: Props) {
         }
     }, [subdomain]);
 
+    const handleImageClick = (index: number) => {
+        setSelectedImageIndex(index);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedImageIndex(null);
+    };
+
+    const handleNextImage = () => {
+        if (selectedImageIndex !== null && data) {
+            setSelectedImageIndex((selectedImageIndex + 1) % data.productsImages.length);
+        }
+    };
+
+    const handlePrevImage = () => {
+        if (selectedImageIndex !== null && data) {
+            setSelectedImageIndex((selectedImageIndex - 1 + data.productsImages.length) % data.productsImages.length);
+        }
+    };
+
     if (!data) {
         return <div>Loading...</div>;
     }
@@ -66,11 +92,19 @@ function Cards({ subdomain }: Props) {
             {data.productsImages.map((image, index) => (
                 <img
                     key={index}
-                    className="aspect-[524/699] object-cover h-[699px] w-[524px]"
+                    className="aspect-[524/699] object-cover h-[699px] w-[524px] cursor-pointer"
                     src={image}
                     alt={`Product ${index + 1}`}
+                    onClick={() => handleImageClick(index)}
                 />
             ))}
+            <ImageModal
+                isOpen={isModalOpen}
+                imageSrc={selectedImageIndex !== null ? data.productsImages[selectedImageIndex] : ''}
+                onClose={handleCloseModal}
+                onNext={handleNextImage}
+                onPrev={handlePrevImage}
+            />
         </div>
     );
 }
