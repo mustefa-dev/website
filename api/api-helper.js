@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.31.86:5152"
+const BASE_URL = "http://localhost:5152"
 
 if (!BASE_URL) {
   console.error('REACT_APP_BASE_URL is not defined');

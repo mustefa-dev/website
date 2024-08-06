@@ -73,7 +73,7 @@ function AboutComponent({}: Props) {
                     style={{ backgroundColor: data.secondaryColor || '#3b3b3b' }}
                     onClick={() => { if (data.redirectUrl) window.location.href = data.redirectUrl; }}
                 >
-                    Contact
+                    تواصل معنا
                 </button>
             </div>
             <img

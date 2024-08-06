@@ -17,7 +17,7 @@ const SubscriptionExpired = () => {
                 textAlign="center"
             >
                 <Typography variant="h4" gutterBottom>
-                    الاشتراك منتهي
+                    الموقع متوقف
                 </Typography>
                 <Typography variant="body1" paragraph>
                     يرجى الاتصال بالشركة لتجديد الاشتراك.
