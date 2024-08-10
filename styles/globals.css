@@ -255,3 +255,69 @@ html {
 .shape-hexagram {
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.blog-post {
+  background-color: var(--surface-color);
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+/* Header.module.css */
+.appBar {
+  background-color: #3b3b3b;
+}
+
+.logo {
+  height: 48px; /* Adjust height for consistency */
+  width: 48px; /* Set width to the same as height to make it circular */
+  border-radius: 50%; /* Make the logo circular */
+}
+
+.logoSmall {
+  height: 40px;
+  width: 40px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftSection, .rightSection {
+  display: flex;
+  align-items: center;
+}
+
+.centerSection {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.menuButton {
+  margin-right: 16px;
+}
+
+.logoWrapper {
+  position: absolute;
+  left: 575px; /* Adjust this value to move the logo to the right */
+}
+

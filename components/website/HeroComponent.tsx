@@ -42,7 +42,7 @@ function HeroComponent({}: Props) {
 
     return (
         <div className='h-[100vh] bg-fixed bg-center bg-cover' style={{ backgroundImage: `url(${data.heroImage})` }}>
-            <div className='flex flex-col justify-center items-center mt-10 h-full' style={{ background: `${hex}68` }}>
+            <div className='flex flex-col justify-center items-center mt-0 h-full' style={{ background: `${hex}68` }}>
                 <h1 className='text-white text-3xl sm:text-5xl font-bold text-center'>{data.heroTitle}</h1>
                 <p className='text-white text-base sm:text-xl'>{data.heroDescription}</p>
                 <button

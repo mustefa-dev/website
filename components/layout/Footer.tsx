@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useDeviceInfo from '@/hooks/useDeviceInfo';
 import axios from 'axios';
 import apiHelper from '@/api/api-helper';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Typography, Grid, Box } from '@material-ui/core';
 import { Facebook as FacebookIcon, Twitter as TwitterIcon, Instagram as InstagramIcon, LinkedIn as LinkedInIcon, YouTube as YouTubeIcon } from '@material-ui/icons';
 
 type FooterData = {
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
         }
     }, []);
 
-    if (!data) return <div>Loading...</div>;
+    if (!data) return <Typography variant="body1" align="center">Loading...</Typography>;
 
     const getSocialMediaIcon = (link: string) => {
         if (link.includes('facebook.com')) return socialMediaIcons.facebook;
@@ -50,32 +50,61 @@ const Footer: React.FC = () => {
 
     return (
         <footer
-            className='flex flex-col items-center text-white mt-14 py-10'
-            style={{ backgroundColor: data.primaryColor || 'black' }}
+            style={{
+                backgroundColor: data.primaryColor || 'black',
+                color: 'white',
+                padding: '20px 0',
+                textAlign: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '200px',
+            }}
         >
-            <div className='w-full flex flex-col md:flex-row-reverse gap-6 px-4 md:px-16 lg:gap-16'>
-                <p className='text-center mb-6 md:mb-0 md:w-1/2 lg:w-[500px]'>{data.description}</p>
-                <div className='flex flex-col items-center text-center gap-2'>
-                    <p>{data.location}</p>
-                    <p>{data.emailContact}</p>
-                    <p>{data.phoneContact}</p>
-                </div>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4 mt-6">
-                {data.socialMediaLinks.map((link, index) => {
-                    const icon = getSocialMediaIcon(link);
-                    return icon ? (
-                        <IconButton key={index} component="a" href={link} target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
-                            {icon}
-                        </IconButton>
-                    ) : null;
-                })}
-            </div>
-            <div className="w-full flex justify-center border-t border-gray-700 mt-6 pt-4">
-                <p className="text-center text-gray-400">{data.rights}</p>
-            </div>
+            <Grid container spacing={0} justifyContent="center" alignItems="center">
+                <Grid item xs={false} md={4}>
+                    {/* Left box - empty */}
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Box>
+                        <Typography variant="body1" paragraph>
+                            {data.description}
+                        </Typography>
+                        <Box display="flex" flexDirection="column" alignItems="center" mb={2}>
+                            <Typography variant="body2">{data.location}</Typography>
+                            <Typography variant="body2">{data.emailContact}</Typography>
+                            <Typography variant="body2">{data.phoneContact}</Typography>
+                        </Box>
+                        <Box display="flex" justifyContent="center" flexWrap="wrap" mb={2}>
+                            {data.socialMediaLinks.map((link, index) => {
+                                const icon = getSocialMediaIcon(link);
+                                return icon ? (
+                                    <IconButton
+                                        key={index}
+                                        component="a"
+                                        href={link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ color: 'white', margin: '0 8px' }}
+                                    >
+                                        {icon}
+                                    </IconButton>
+                                ) : null;
+                            })}
+                        </Box>
+                    </Box>
+                </Grid>
+                <Grid item xs={false} md={4}>
+                    {/* Right box - empty */}
+                </Grid>
+            </Grid>
+            <Box borderTop="1px solid #444" pt={2} mt={4}>
+                <Typography variant="body2" color="textSecondary">
+                    {data.rights}
+                </Typography>
+            </Box>
         </footer>
     );
-}
+};
 
 export default Footer;

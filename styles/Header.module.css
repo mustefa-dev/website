@@ -1,0 +1,43 @@
+.appBar {
+    background-color: #3b3b3b;
+    height: 55px; /* Adjust height as needed */
+}
+.logo {
+    height: 48px; /* Adjust height for consistency */
+    width: 48px; /* Set width to the same as height to make it circular */
+    border-radius: 50%; /* Make the logo circular */
+}
+
+.logoSmall {
+    height: 40px;
+    width: 40px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 96px
+}
+
+.leftSection, .rightSection {
+    display: flex;
+    align-items: center;
+}
+
+.centerSection {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -30px; /* Adjust this value as needed to move it higher */
+}
+
+.menuButton {
+    margin-right: 16px;
+}
+
+.logoWrapper {
+    position: absolute;
+    left: 575px; /* Adjust this value to move the logo to the right */
+}

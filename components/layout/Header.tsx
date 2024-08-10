@@ -3,20 +3,21 @@ import useDeviceInfo from '@/hooks/useDeviceInfo';
 import Link from 'next/link';
 import axios from 'axios';
 import apiHelper from '@/api/api-helper';
-
-type Props = {};
+import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import AppDrawer from '../AppDrawer';
+import styles from '../../styles/Header.module.css';
 
 type HeaderData = {
-    logoUrl: string;
-    name: string;
     logoImage: string;
-    phoneContact: string;
+    name: string;
     primaryColor: string;
 };
 
-function Header({}: Props) {
+const Header: React.FC = () => {
     const { isMobile } = useDeviceInfo();
     const [data, setData] = useState<HeaderData | null>(null);
+    const [drawerOpen, setDrawerOpen] = useState(false);
 
     useEffect(() => {
         const subdomain = process.env.NEXT_PUBLIC_SUBDOMAIN;
@@ -32,23 +33,48 @@ function Header({}: Props) {
         }
     }, []);
 
+    const handleMenuClick = () => {
+        setDrawerOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setDrawerOpen(false);
+    };
+
     if (!data) {
         return <div>Loading...</div>;
     }
 
     return (
-        <div
-            className={`w-full h-[70px] fixed top-0 left-0 right-0 z-50 flex justify-between items-center ${isMobile ? 'px-4' : 'px-16'}`}
-            style={{ backgroundColor: data.primaryColor || '#3b3b3b' }}
-        >
-            <p className='text-white text-lg font-bold'>{data.phoneContact}</p>
-
-            <Link href={'/'} className='cursor-pointer h-16 w-12'>
-                <img src={data.logoImage} alt="Logo" className={`${isMobile ? 'w-24 h-10' : 'w-32 h-12'}`} />
-            </Link>
-            <p className='text-white text-lg font-bold'>{data.name}</p>
-        </div>
+        <>
+            <AppBar position="static" className={styles.appBar} style={{ backgroundColor: data.primaryColor || '#3b3b3b' }}>
+                <Toolbar className={styles.toolbar}>
+                    <div className={styles.leftSection}>
+                        <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuClick} className={styles.menuButton}>
+                            <MenuIcon />
+                        </IconButton>
+                    </div>
+                    <div className={styles.centerSection}>
+                        <div className={styles.logoWrapper}>
+                            <Link href="/">
+                                <img
+                                    src={data.logoImage}
+                                    alt="Logo"
+                                    className={`${styles.logo} ${isMobile ? styles.logoSmall : ''}`} // Apply small logo size on mobile
+                                />
+                            </Link>
+                        </div>
+                    </div>
+                    <div className={styles.rightSection}>
+                        <Typography variant="h6">
+                            {data.name}
+                        </Typography>
+                    </div>
+                </Toolbar>
+            </AppBar>
+            <AppDrawer open={drawerOpen} onClose={handleDrawerClose} />
+        </>
     );
-}
+};
 
 export default Header;
