@@ -7,12 +7,14 @@ type Props = {
     open: boolean;
     onClose: () => void;
     primaryColor: string;
+    backgroundColor: string; // New prop for background color
+    textColor: string;
 };
 
 const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: 250,
-        backgroundColor: (props: Props) => props.primaryColor || theme.palette.background.paper,
+        backgroundColor: (props: Props) => props.backgroundColor || theme.palette.background.paper, // Use backgroundColor prop
     },
     listItem: {
         '&:hover': {
@@ -30,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const AppDrawer: React.FC<Props> = ({ open, onClose, primaryColor }) => {
-    const classes = useStyles({ primaryColor });
+const AppDrawer: React.FC<Props> = ({ open, onClose, primaryColor, backgroundColor }) => {
+    const classes = useStyles({ primaryColor, backgroundColor });
 
     const handleClose = useCallback(() => {
         onClose();
@@ -39,6 +41,7 @@ const AppDrawer: React.FC<Props> = ({ open, onClose, primaryColor }) => {
 
     return (
         <Drawer
+            backgroundColor={backgroundColor}
             anchor="left"
             open={open}
             onClose={handleClose}
@@ -50,7 +53,7 @@ const AppDrawer: React.FC<Props> = ({ open, onClose, primaryColor }) => {
                 <h3>MyApp</h3>
             </div>
             <Divider />
-            <List>
+            <List >
                 <ListItem button component={Link} to="/" onClick={handleClose} className={classes.listItem}>
                     <ListItemIcon className={classes.listItemIcon}>
                         <HomeIcon />

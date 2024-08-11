@@ -72,7 +72,10 @@ const Header: React.FC = () => {
                     </div>
                 </Toolbar>
             </AppBar>
-            <AppDrawer open={drawerOpen} onClose={handleDrawerClose} />
+            <AppDrawer open={drawerOpen} onClose={handleDrawerClose}
+                       backgroundColor={data.primaryColor || '#3b3b3b'}
+                       textColor={data.primaryColor=='#0a0a0a'?'#ffffff':'#000'}
+            />
         </>
     );
 };
